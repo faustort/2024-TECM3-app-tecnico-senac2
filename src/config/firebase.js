@@ -12,7 +12,7 @@ const firebaseConfig = {
   projectId: "tecm3-appbase",
   storageBucket: "tecm3-appbase.appspot.com",
   messagingSenderId: "715929072546",
-  appId: "1:715929072546:web:db5098175d61bb0762f8fb",
+  appId: "1:715929072546:web:db5098175d61bb0762f8fb"
 };
 
 // Initialize Firebase

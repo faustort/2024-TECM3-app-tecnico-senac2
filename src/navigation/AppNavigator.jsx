@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
- import SplashScreen from "../screens/SplashScreen/SplashScreen";
+import SplashScreen from "../screens/SplashScreen/SplashScreen";
 import RegisterScreen from "../screens/RegisterScreen/RegisterScreen";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,14 @@ export default function AppNavigator() {
           options={{
             headerShown: true,
             title: "Registro de usuário",
+          }}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+            title: "Página iniciaç",
           }}
         />
       </Stack.Navigator>
