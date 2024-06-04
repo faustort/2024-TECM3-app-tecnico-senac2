@@ -47,6 +47,12 @@ export default function LoginScreen({ navigation }) {
         >
           Fazer cadastro
         </Button>
+        <Button
+          style={styles.input}
+          onPress={() => navigation.navigate("SettingsScreen")}
+        >
+          Configurações
+        </Button>
       </View>
     </Surface>
   );

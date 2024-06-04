@@ -6,14 +6,22 @@ import RegisterScreen from "../screens/RegisterScreen/RegisterScreen";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import { Provider } from "react-native-paper";
 import { useTheme } from "../contexts/ThemeContext";
-import { CombinedDarkTheme, CombinedLightTheme, NavigationDarkTheme, NavigationLightTheme } from "../config/theme";
+import {
+  CombinedDarkTheme,
+  CombinedLightTheme,
+  NavigationDarkTheme,
+  NavigationLightTheme,
+} from "../config/theme";
+import SettingsScreen from "../screens/SettingsScreen/SettingsScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   const { isDarkTheme } = useTheme();
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedLightTheme;
-  const themeNavigation = isDarkTheme ? NavigationDarkTheme : NavigationLightTheme;
+  const themeNavigation = isDarkTheme
+    ? NavigationDarkTheme
+    : NavigationLightTheme;
   return (
     <Provider theme={theme}>
       <NavigationContainer theme={themeNavigation}>
@@ -46,6 +54,14 @@ export default function AppNavigator() {
             options={{
               headerShown: false,
               title: "Página iniciaç",
+            }}
+          />
+          <Stack.Screen
+            name="SettingsScreen"
+            component={SettingsScreen}
+            options={{
+              headerShown: false,
+              title: "Configurações",
             }}
           />
         </Stack.Navigator>
