@@ -24,6 +24,9 @@ export default function LoginScreen({ navigation }) {
         <Button onPress={() => navigation.navigate("RegisterScreen")}>
           Fazer cadastro
         </Button>
+        <Button onPress={() => navigation.navigate("SettingsScreen")}>
+          Configurações
+        </Button>
       </View>
     </Surface>
   );
