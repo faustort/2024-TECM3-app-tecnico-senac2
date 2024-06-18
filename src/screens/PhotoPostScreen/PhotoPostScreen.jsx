@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { View, Image, StyleSheet, ActivityIndicator, Platform } from "react-native";
 import { Button, TextInput, Surface, Text } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
-import { storage } from "../../config/firebase";
+import { storage, db } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function PhotoPostScreen() {
   const [image, setImage] = useState(null);
@@ -50,6 +51,13 @@ export default function PhotoPostScreen() {
       const storageRef = ref(storage, `images/${Date.now()}-${caption}.jpg`);
       const snapshot = await uploadBytes(storageRef, blob);
       const downloadURL = await getDownloadURL(snapshot.ref);
+
+      // Salvar a URL da imagem no Firestore
+      await addDoc(collection(db, "posts"), {
+        imageUrl: downloadURL,
+        caption: caption,
+        createdAt: new Date(),
+      });
 
       console.log("Upload realizado com sucesso:", downloadURL);
       setUploading(false);
