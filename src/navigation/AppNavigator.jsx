@@ -13,6 +13,7 @@ import {
   NavigationLightTheme,
 } from "../config/theme";
 import SettingsScreen from "../screens/SettingsScreen/SettingsScreen";
+import PhotoPostScreen from "../screens/PhotoPostScreen/PhotoPostScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +26,9 @@ export default function AppNavigator() {
   return (
     <Provider theme={theme}>
       <NavigationContainer theme={themeNavigation}>
-        <Stack.Navigator>
+        <Stack.Navigator
+          initialRouteName="PhotoPostScreen"
+        >
           <Stack.Screen
             name="SplashScreen"
             component={SplashScreen}
@@ -63,6 +66,11 @@ export default function AppNavigator() {
               headerShown: false,
               title: "Configurações",
             }}
+          />
+          <Stack.Screen
+            name="PhotoPostScreen"
+            component={PhotoPostScreen}
+            options={{ title: "Nova Postagem" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
